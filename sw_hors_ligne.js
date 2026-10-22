@@ -2,7 +2,7 @@
 // sans connexion. tools/publier_web.py remplace VERSION et FICHIERS à chaque publication.
 'use strict';
 
-const VERSION = "d4b9b66c8dc7";
+const VERSION = "f7774ba42f75";
 const FICHIERS = [
   "./",
   "assets/AssetManifest.bin",
@@ -90,10 +90,15 @@ self.addEventListener('activate', (evenement) => {
   );
 });
 
+// Sites extérieurs dont la copie est gardée elle aussi : Flutter y prend à la demande les
+// polices de secours (emojis des avatars, symboles rares).
+const EXTERIEURS = ['https://fonts.gstatic.com', 'https://www.gstatic.com'];
+
 self.addEventListener('fetch', (evenement) => {
   const requete = evenement.request;
   if (requete.method !== 'GET') return;
-  if (new URL(requete.url).origin !== self.location.origin) return;
+  const origine = new URL(requete.url).origin;
+  if (origine !== self.location.origin && !EXTERIEURS.includes(origine)) return;
 
   // Ouverture de l'appli : le réseau d'abord (pour les mises à jour), sinon la copie gardée.
   if (requete.mode === 'navigate') {
@@ -109,7 +114,9 @@ self.addEventListener('fetch', (evenement) => {
       (copie) =>
         copie ||
         fetch(requete).then((reponse) => {
-          if (reponse.ok) {
+          // Une réponse d'un site extérieur sans en-tête CORS est « opaque » (statut 0) :
+          // on la garde aussi, elle reste utilisable par le navigateur.
+          if (reponse.ok || reponse.type === 'opaque') {
             const double = reponse.clone();
             caches.open(CACHE).then((cache) => cache.put(requete, double));
           }
