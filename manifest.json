@@ -1,11 +1,11 @@
 {
-    "name": "aide_scolaire_6e",
-    "short_name": "aide_scolaire_6e",
+    "name": "Aide scolaire 6e",
+    "short_name": "Aide 6e",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#F5F6FB",
     "theme_color": "#5B5BD6",
-    "description": "Aide scolaire 6e",
+    "description": "Cours, fiches, exercices et devoirs de 6e.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
@@ -31,5 +31,6 @@
             "type": "image/png",
             "purpose": "maskable"
         }
-    ]
+    ],
+    "lang": "fr"
 }

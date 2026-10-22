@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -23,14 +23,14 @@
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="aide_scolaire_6e">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Aide 6e">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>aide_scolaire_6e</title>
+  <title>Aide scolaire 6e</title>
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -43,5 +43,14 @@
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
   <script src="flutter_bootstrap.js" async></script>
+  <script>
+    // Mode hors ligne : le service worker garde l'appli en mémoire. Il n'existe que dans la
+    // version publiée (tools/publier_web.py) ; ailleurs, l'enregistrement échoue sans gêne.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw_hors_ligne.js').catch(function () {});
+      });
+    }
+  </script>
 </body>
 </html>
