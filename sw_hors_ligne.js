@@ -2,7 +2,7 @@
 // sans connexion. tools/publier_web.py remplace VERSION et FICHIERS à chaque publication.
 'use strict';
 
-const VERSION = "dccc8cefb176";
+const VERSION = "63780871ed68";
 const FICHIERS = [
   "./",
   "assets/AssetManifest.bin",
@@ -11,6 +11,7 @@ const FICHIERS = [
   "assets/NOTICES",
   "assets/assets/fonts/Nunito-Variable.ttf",
   "assets/assets/packs/6e-2026-2027/pack.json",
+  "assets/assets/packs/CE2-2026-2027/pack.json",
   "assets/assets/packs/index.json",
   "assets/fonts/MaterialIcons-Regular.otf",
   "assets/fonts/fallback/Roboto-Regular.ttf",
