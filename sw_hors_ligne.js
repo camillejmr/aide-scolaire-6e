@@ -2,7 +2,7 @@
 // sans connexion. tools/publier_web.py remplace VERSION et FICHIERS à chaque publication.
 'use strict';
 
-const VERSION = "fb65c0086d92";
+const VERSION = "04610ad1ca6b";
 const FICHIERS = [
   "./",
   "assets/AssetManifest.bin",
